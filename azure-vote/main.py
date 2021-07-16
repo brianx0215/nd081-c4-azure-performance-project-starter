@@ -98,7 +98,7 @@ def index():
         with tracer.span(name="Cats Vote") as span:
             print("Cats Vote")
         vote2 = r.get(button2).decode('utf-8')
-        with tracer.span(name="Cats Vote") as span:
+        with tracer.span(name="Dogs Vote") as span:
             print("Dogs Vote")
 
         # Return index with values
