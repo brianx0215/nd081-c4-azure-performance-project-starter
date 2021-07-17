@@ -109,17 +109,18 @@ def index():
         if request.form['vote'] == 'reset':
 
             # Empty table and return results
-            r.set(button1,0)
-            r.set(button2,0)
             vote1 = r.get(button1).decode('utf-8')
-            properties = {'custom_dimensions': {'Cats Vote': vote1}}
+            properties = {'custom_dimensions': {'Vote Count': vote1}}
             logger.info('Cats Vote', extra=properties)
 
             vote2 = r.get(button2).decode('utf-8')
-            properties = {'custom_dimensions': {'Dogs Vote': vote2}}
+            properties = {'custom_dimensions': {'Vote Count': vote2}}
             logger.info('Dogs Vote', extra=properties)
 
-            return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
+            r.set(button1,0)
+            r.set(button2,0)
+
+            return render_template("index.html", value1=0, value2=0, button1=button1, button2=button2, title=title)
 
         else:
 
